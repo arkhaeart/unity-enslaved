@@ -93,7 +93,7 @@ TextureImporter:
       213: -5753151570093885466
     second: flare_armor_29
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -113,6 +113,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -121,9 +123,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -144,9 +146,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -737,6 +743,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      flare_armor_3: 8799792156863395267
+      flare_armor_11: -6690072607757409991
+      flare_armor_23: 7596215250128356099
+      flare_armor_2: -75040396921890675
+      flare_armor_17: -4214081545311973619
+      flare_armor_8: -7884570143472510734
+      flare_armor_21: -6564446018456713779
+      flare_armor_6: -8869905478719167701
+      flare_armor_1: -8772121908596508239
+      flare_armor_19: -312173433268445198
+      flare_armor_14: 4421011109958150473
+      flare_armor_20: 8372541301182709270
+      flare_armor_0: 9056638080705837267
+      flare_armor_13: 6834255485201763926
+      flare_armor_9: 699628181185557196
+      flare_armor_4: -4199603999977969845
+      flare_armor_15: 7546659845304183437
+      flare_armor_5: 4245921647786262323
+      flare_armor_7: -8069833818379120915
+      flare_armor_22: 3215174598790288886
+      flare_armor_12: -5066207578245859049
+      flare_armor_10: 2450509959767089554
+      flare_armor_16: 4069267563741766016
+      flare_armor_18: 3576992640591830667
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

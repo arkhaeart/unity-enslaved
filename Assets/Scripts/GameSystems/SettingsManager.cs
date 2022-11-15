@@ -5,7 +5,7 @@ using Containment;
 using Items;
 using System.Linq;
 namespace GameSystems
-{/*
+{
     public class SettingsManager : Singleton<SettingsManager>,IInitable
     {
         const string infoPath = "Info/";
@@ -44,5 +44,5 @@ namespace GameSystems
             eqSlots.Init();
             itemDatabase.Init();
         }
-    }*/
+    }
 }
