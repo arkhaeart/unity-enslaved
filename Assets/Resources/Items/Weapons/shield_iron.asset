@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfa0429b29ae7247af3b8a1e31e682d, type: 3}
+  m_Name: shield_iron
+  m_EditorClassIdentifier: 
+  gameSprite: {fileID: -2134295144962696747, guid: 1ab44c44f98134548b10c886187f6e25,
+    type: 3}
+  uiSprite: {fileID: 21300000, guid: de52292ef40236b48b8ad129ed498c36, type: 3}
+  value: 1
+  weight: 1
+  X: 3
+  Y: 4
+  material: 8
+  reactions: []
+  type: 2
+  rawDamage: 3
+  <Slot>k__BackingField: shield

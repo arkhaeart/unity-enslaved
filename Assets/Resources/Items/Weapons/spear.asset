@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cfa0429b29ae7247af3b8a1e31e682d, type: 3}
+  m_Name: spear
+  m_EditorClassIdentifier: 
+  gameSprite: {fileID: -4520313995242353289, guid: 1ab44c44f98134548b10c886187f6e25,
+    type: 3}
+  uiSprite: {fileID: 21300000, guid: a5d8e436c9d142e49ab261ba3f63dd9e, type: 3}
+  value: 1
+  weight: 1
+  X: 7
+  Y: 2
+  material: 7
+  reactions: []
+  type: 1
+  rawDamage: 15
+  <Slot>k__BackingField: weapon

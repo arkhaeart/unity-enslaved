@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c09e2ba883a1c24a975b9b2b629327d, type: 3}
+  m_Name: pants_leather
+  m_EditorClassIdentifier: 
+  gameSprite: {fileID: 95300849705831045, guid: 1ab44c44f98134548b10c886187f6e25,
+    type: 3}
+  uiSprite: {fileID: -8069833818379120915, guid: 1f031878ed212204ab7863efe653dfc4,
+    type: 3}
+  value: 1
+  weight: 1
+  X: 3
+  Y: 4
+  material: 3
+  reactions: []
+  <Slot>k__BackingField: legs
