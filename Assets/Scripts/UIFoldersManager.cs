@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameSystems;
+using Zenject;
+
 public class UIFoldersManager : MonoBehaviour
 {
     public RectTransform inventory, interaction, social, attributes, character;
     Dictionary<int, RectTransform> folders;
-    private void Start()
+    [Inject]
+    public void Initialize(InputManager inputManager)
     {
         folders = new Dictionary<int, RectTransform>
         {
@@ -20,7 +23,7 @@ public class UIFoldersManager : MonoBehaviour
         {
             ToggleFolder(rect);
         }
-        InputManager.Instance.HotKeyFoldersResponse += FolderResponse;
+        inputManager.HotKeyFoldersResponse += FolderResponse;
     }
     public void FolderResponse(int ID)
     {

@@ -6,7 +6,7 @@ using System;
 using UnityEngine.EventSystems;
 using UI;
 namespace GameSystems {
-    public class InputManager :Singleton<InputManager>,IPointerDownHandler,IBeginDragHandler,IDragHandler,IEndDragHandler
+    public class InputManager :MonoBehaviour,IPointerDownHandler,IBeginDragHandler,IDragHandler,IEndDragHandler
     {
         public delegate void Vector2Response(Vector2 v2);
         public delegate void TriggerResponse();
@@ -28,16 +28,12 @@ namespace GameSystems {
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         GraphicRaycaster raycaster;
         Vector2 axisInput;
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
+
             raycaster = GetComponent<GraphicRaycaster>();
         }
-        private void Start()
-        {
 
-
-        }
         private void LateUpdate()
         {
 

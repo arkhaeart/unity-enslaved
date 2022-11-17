@@ -9,17 +9,17 @@ namespace Units
         Coroutine movement;
         CustomCour inputBlocked;
         InputState<bool> blockResponse;
-        protected override void Start()
-        {
-            base.Start();
-            GameSystems.InputManager inputManager=GameSystems.InputManager.Instance;
-            inputManager.MovResponse += MovementResponse;
-            inputManager.MouseResponse += MouseMovementResponse;
-            inputManager.AttackResponse += AttackResponse;
-            inputManager.InputBlocked += InputBlocked;
-            inputBlocked = new CustomCour(this, new System.Func<IEnumerator>(BlockingInput));
-            blockResponse = new InputState<bool>(inputManager.BlockResponse,new System.Action<bool>(BlockResponse));
-        }
+        //protected  void Start()
+        //{
+
+        //    GameSystems.InputManager inputManager=GameSystems.InputManager.Instance;
+        //    inputManager.MovResponse += MovementResponse;
+        //    inputManager.MouseResponse += MouseMovementResponse;
+        //    inputManager.AttackResponse += AttackResponse;
+        //    inputManager.InputBlocked += InputBlocked;
+        //    inputBlocked = new CustomCour(this, new System.Func<IEnumerator>(BlockingInput));
+        //    blockResponse = new InputState<bool>(inputManager.BlockResponse,new System.Action<bool>(BlockResponse));
+        //}
 
         IEnumerator BlockingInput()
         {

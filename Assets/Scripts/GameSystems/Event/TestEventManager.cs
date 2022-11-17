@@ -11,7 +11,7 @@ namespace GameSystems.GameEvent
         SUPPRESS,
         FATAL
     }
-    public class TestEventManager : Singleton<TestEventManager>
+    public class TestEventManager : MonoBehaviour
     {
         public static event System.Action<Agent> OnCriminal;
         public ConflictLevel globalConflictLevel;

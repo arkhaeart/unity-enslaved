@@ -21,10 +21,10 @@ namespace Containment {
                 }
             }
         }
-        private void Start()
-        {
-            Crime = SettingsManager.Instance.crimeCodex.crimeDict[crime];
-            //OnIntrusion += GameSystems.GameEvent.TestEventManager.Instance.CriminalFound;
-        }
+        //private void Start()
+        //{
+        //    Crime = SettingsManager.Instance.crimeCodex.crimeDict[crime];
+        //    //OnIntrusion += GameSystems.GameEvent.TestEventManager.Instance.CriminalFound;
+        //}
     }
 }

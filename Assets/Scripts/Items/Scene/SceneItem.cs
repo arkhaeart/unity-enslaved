@@ -17,19 +17,19 @@ namespace Items
             if(item!=null)
                 renderer.sprite = item.gameSprite;
         }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if(collision.tag == "Player")
-            {
-                TriggerEntered(GameSystems.UseAction.TAKE);
-            }
-        }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.tag == "Player")
-            {
-                TriggerExited();
-            }
-        }
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if(collision.tag == "Player")
+        //    {
+        //        TriggerEntered(GameSystems.UseAction.TAKE);
+        //    }
+        //}
+        //private void OnTriggerExit2D(Collider2D collision)
+        //{
+        //    if (collision.tag == "Player")
+        //    {
+        //        TriggerExited();
+        //    }
+        //}
     }
 }

@@ -14,7 +14,7 @@ namespace GameSystems.GameEvent
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-            if(GUILayout.Button("Игрок- преступник"))
+            if(GUILayout.Button("Set Player a criminal"))
             {
                 obj.Criminal();
             }

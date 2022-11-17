@@ -7,9 +7,10 @@ using Items;
 [CustomEditor(typeof(InventoryInfoPreset))]
 public class InventoryInfoPresetEditor : Editor
 {
+    const string itemDatabasePath = "";
     ItemDatabase Database
     {
-        get => SettingsManager.Instance.itemDatabase;
+        get => Resources.Load<ItemDatabase>(itemDatabasePath);
     }
     InventoryInfoPreset Obj
     {

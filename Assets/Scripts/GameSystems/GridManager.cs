@@ -12,11 +12,13 @@ namespace GameSystems {
         Vector3 cornerXY;
         int Xlenght, Ylenght;
         Node[,] nodeGrid;
-        void Start()
+        float sliceRatio;
+        LayerMask nonWalkableMask;
+        public GridManager()
         {
-            CreateGrid();
+
         }
-        void SetCenterAndBounds()
+        void SetCenterAndBounds(Tilemap tilemap)
         {
             Bounds bounds = tilemap.localBounds;
             chunkCenter = bounds.center;
@@ -28,9 +30,9 @@ namespace GameSystems {
             Ylenght = Mathf.RoundToInt(2 * Yextent / sliceRatio);
             nodeGrid = new Node[Xlenght, Ylenght];
         }
-        void CreateGrid()
+        public void CreateGrid(Tilemap tilemap)
         {
-            SetCenterAndBounds();
+            SetCenterAndBounds(tilemap);
 
             for (int x = 0; x < Xlenght; x++)
                 for (int y = 0; y < Ylenght; y++)

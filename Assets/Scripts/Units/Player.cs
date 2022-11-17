@@ -6,18 +6,18 @@ using Containment;
 using UI;
 namespace Units
 {
-    public class Player : ManualAgent,ISlave
+    public class Player : ManualAgent//,ISlave
     {
-        SlaveModule sModule;
-        public SlaveModule SModule
-        {
-            get => sModule;
-        }
-        protected override void Start()
-        {
-            base.Start();
-            sModule = new SlaveModule(this);
-        }
+        //SlaveModule sModule;
+        //public SlaveModule SModule
+        //{
+        //    get => sModule;
+        //}
+        //protected override void Start()
+        //{
+        //    base.Start();
+        //    //sModule = new SlaveModule(this);
+        //}
 
     }
 }

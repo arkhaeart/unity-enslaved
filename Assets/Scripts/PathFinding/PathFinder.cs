@@ -1,44 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using System.Threading;
 using GameSystems;
+using Zenject;
+
 namespace Pathfinding
 {
-    public class PathFinder : Singleton<PathFinder>
+    public partial class PathFinder : IPathFinder
     {
-        Queue<IPathCallback> pathResults=new Queue<IPathCallback>();
-        private void Start()
+        private Queue<IPathCallback> pathResults = new Queue<IPathCallback>();
+        private MyCour checkingForReadiedPaths;
+        private readonly GridManager gridManager;
+        [Inject]
+        public PathFinder(CoroutineHelper coroutineHelper, GridManager gridManager)
         {
-            StartCoroutine(CheckReadiedPaths());
+            this.gridManager = gridManager;
+            checkingForReadiedPaths = new MyCour(coroutineHelper, CheckingForReadiedPaths);
         }
-        IEnumerator CheckReadiedPaths()
+        IEnumerator CheckingForReadiedPaths()
         {
             while (true)
             {
-                if(pathResults.Count>0)
+                if (pathResults.Count > 0)
                 {
                     ProcessPathResult();
                 }
                 yield return null;
             }
         }
-        public void OnPathRequested(PathRequest request)
+        public void RequestPath(PathRequest request)
         {
             ThreadStart newThread = delegate { ProcessPathRequest(request); };
             newThread.Invoke();
         }
         void PathFound(IPathCallback result)
         {
-            lock(pathResults)
+            lock (pathResults)
             {
                 pathResults.Enqueue(result);
             }
         }
         void ProcessPathResult()
         {
-            lock(pathResults)
+            lock (pathResults)
             {
                 IPathCallback result = pathResults.Dequeue();
                 result.Call();
@@ -48,12 +53,12 @@ namespace Pathfinding
         {
             bool success = false;
             Vector3[] waypoints = new Vector3[0];
-            Node starting = GridManager.Instance.GetNodeFromPos(request.start);
-            Node ending = GridManager.Instance.GetNodeFromPos(request.end);
+            Node starting = gridManager.GetNodeFromPos(request.start);
+            Node ending = gridManager.GetNodeFromPos(request.end);
             if (starting != null && ending != null)
             {
                 starting.parent = starting;
-                HeapQueue<Node> open = new HeapQueue<Node>(GridManager.Instance.NodeCount);
+                HeapQueue<Node> open = new HeapQueue<Node>(gridManager.NodeCount);
                 HashSet<Node> closed = new HashSet<Node>();
                 open.Enqueue(starting);
                 int i = 0;
@@ -70,11 +75,11 @@ namespace Pathfinding
                         success = true;
                         break;
                     }
-                    var neighbours = GridManager.Instance.GetNeighbours(current);
+                    var neighbours = gridManager.GetNeighbours(current);
                     foreach (var neighbour in neighbours)
                     {
 
-                        if (!neighbour.walkable|| closed.Contains(neighbour))
+                        if (!neighbour.walkable || closed.Contains(neighbour))
                             continue;
                         float newGCost = current.gCost + GetDistance(current, neighbour);
                         if (newGCost < neighbour.gCost || !open.Contains(neighbour))
@@ -102,7 +107,7 @@ namespace Pathfinding
             }
             return;
         }
-        
+
         int GetDistance(Vector3 from, Vector3 to)
         {
             int X = Mathf.RoundToInt((to.x - from.x) / 0.16f);
@@ -110,11 +115,11 @@ namespace Pathfinding
 
             return Mathf.Abs(X) + Mathf.Abs(Y);
         }
-        Vector3[] ReconstructPath(Node from,Node to)
+        Vector3[] ReconstructPath(Node from, Node to)
         {
             List<Vector3> path = new List<Vector3>();
             Node current = to;
-            while(current!=from)
+            while (current != from)
             {
                 path.Add(current.position);
                 current = current.parent;
@@ -126,7 +131,7 @@ namespace Pathfinding
         }
         float GetDistance(Node from, Node to)
         {
-            float distance = Mathf.RoundToInt(Vector3.Distance(from.position, to.position)/0.16f);
+            float distance = Mathf.RoundToInt(Vector3.Distance(from.position, to.position) / 0.16f);
             int X = Mathf.Abs(from.X - to.X);
             int Y = Mathf.Abs(from.Y - to.Y);
             if (X >= Y)
@@ -141,48 +146,6 @@ namespace Pathfinding
         public interface IPathCallback
         {
             void Call();
-        }
-        public class PathSuccessCallback : IPathCallback
-        {
-            public PathSuccessCallback(Action<Vector3[]>callback,Vector3[]waypoints)
-            {
-                this.callback = callback;
-                path = waypoints;
-            }
-            public void Call()
-            {
-                callback(path);
-            }
-            Vector3[] path;
-            Action<Vector3[]> callback;
-        }
-        public class PathFailedCallback : IPathCallback
-        {
-            Action callback;
-            public PathFailedCallback(Action callback)
-            {
-                this.callback = callback;
-            }
-            public void Call()
-            {
-                callback();
-            }
-        }
-
-        public struct PathRequest
-        {
-            public Vector3 start;
-            public Vector3 end;
-            public Action<Vector3[]> success;
-            public IPathCallback fail;
-
-            public PathRequest(Vector3 _start, Vector3 _end, Action<Vector3[]> success, IPathCallback fail)
-            {
-                start = _start;
-                end = _end;
-                this.success = success;
-                this.fail = fail;
-            }
         }
     }
 }

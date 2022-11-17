@@ -6,12 +6,16 @@ using Items;
 using UI;
 namespace GameSystems
 {
-    public class UseActionManager : Singleton<UseActionManager>
+    public class UseActionManager 
     {
         public event System.Action<Dictionary<Unit, UseAction>> DrawCall; 
 
         public Dictionary<Unit, UseAction> activeCards = new Dictionary<Unit, UseAction>();
         public Dictionary<UseAction, ActionUsage> actionDict = new Dictionary<UseAction, ActionUsage>();
+        public void ActionRequest(Unit first, Unit second, UseAction useAction)
+        {
+
+        }
         public void AddToPossibleActions(Unit unit,UseAction action)
         {
             activeCards.Add(unit, action);
@@ -37,22 +41,22 @@ namespace GameSystems
             DrawCall(activeCards);
             usage.Use(LevelManager.Instance.player,unit);
         }
-        private void Start()
+        public UseActionManager(InputManager inputManager)
         {
-            InputManager.Instance.UseStartResponse += OnChoiceStart;
-            SceneItem.TriggerEnter += AddToPossibleActions;
-            SceneItem.TriggerExit += RemoveFromPossibleActions;
+            inputManager.UseStartResponse += OnChoiceStart;
+            //SceneItem.TriggerEnter += AddToPossibleActions;
+            //SceneItem.TriggerExit += RemoveFromPossibleActions;
             UseActionItem.Called += CallUseAction;
             ActionUsageFactory factory = new ActionUsageFactory();
             actionDict = factory.GetDict();
         }
-        protected override void OnDisable()
-        {
-            InputManager.Instance.UseStartResponse -= OnChoiceStart;
-            SceneItem.TriggerEnter -= AddToPossibleActions;
-            SceneItem.TriggerExit -= RemoveFromPossibleActions;
-            UseActionItem.Called -= CallUseAction;
-        }
+        //protected override void OnDisable()
+        //{
+        //    InputManager.Instance.UseStartResponse -= OnChoiceStart;
+        //    SceneItem.TriggerEnter -= AddToPossibleActions;
+        //    SceneItem.TriggerExit -= RemoveFromPossibleActions;
+        //    UseActionItem.Called -= CallUseAction;
+        //}
     }
     public enum UseAction
     {

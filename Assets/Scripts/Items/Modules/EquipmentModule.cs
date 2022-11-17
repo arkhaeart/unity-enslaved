@@ -23,12 +23,12 @@ namespace Units.Modules
         }
         void InitSlots()
         {
-            if(type== Type.CHARACTER)
-            {
-                slots = new Dictionary<string,Item>(SettingsManager.Instance.eqSlots.slotDict);
-            }
-            else
-                slots = new Dictionary<string, Item>(SettingsManager.Instance.workShopSlots.slotDict);
+            //if(type== Type.CHARACTER)
+            //{
+            //    slots = new Dictionary<string,Item>(SettingsManager.Instance.eqSlots.slotDict);
+            //}
+            //else
+            //    slots = new Dictionary<string, Item>(SettingsManager.Instance.workShopSlots.slotDict);
         }
         public override void AddItem(Item item, object index)
         {

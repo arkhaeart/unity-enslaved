@@ -6,7 +6,7 @@ using Items;
 using System.Linq;
 namespace GameSystems
 {
-    public class SettingsManager : Singleton<SettingsManager>,IInitable
+    public class SettingsManager 
     {
         const string infoPath = "Info/";
         const string eqSlotsName = "EqSlotsList";
@@ -16,15 +16,9 @@ namespace GameSystems
         public EqSlotObject eqSlots;
         public EqSlotObject workShopSlots;
         public InventoryInfoPresetHolder presetHolder;
-        protected override void Awake()
+
+        public void Init()
         {
-            base.Awake();
-            LoadSettings();
-            InitSettings();
-        }
-        public  void Init()
-        {
-            base.Awake();
             LoadSettings();
             InitSettings();
         }

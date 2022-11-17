@@ -13,8 +13,8 @@ namespace Containment
         {
             get=> target as Zone;
         }
-        
-        CrimeCodex codex=>SettingsManager.Instance.crimeCodex;
+
+        CrimeCodex codex => throw new System.NotImplementedException();
         
         public override void OnInspectorGUI()
         {

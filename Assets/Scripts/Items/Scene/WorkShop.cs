@@ -20,20 +20,20 @@ namespace Items {
         {
             eModule = new EquipmentModule(this, EquipmentModule.Type.WORKSHOP);
         }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.tag=="Player")
-            {
-                TriggerEntered(GameSystems.UseAction.WORK);
-            }
-        }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.tag == "Player")
-            {
-                TriggerExited();
-            }
-        }
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.tag=="Player")
+        //    {
+        //        TriggerEntered(GameSystems.UseAction.WORK);
+        //    }
+        //}
+        //private void OnTriggerExit2D(Collider2D collision)
+        //{
+        //    if (collision.tag == "Player")
+        //    {
+        //        TriggerExited();
+        //    }
+        //}
         void TryPerformReaction()
         {
 

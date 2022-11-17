@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameSystems;
 using Units;
+using Zenject;
+
 namespace UI
 {
     public class UseActionsDrawer : UIDrawer
@@ -29,11 +31,13 @@ namespace UI
             }
             StoreAll();
         }
-        private void Start()
+        [Inject]
+        public void Initialize(UseActionManager useActionManager,InputManager inputManager)
         {
-            UseActionManager.Instance.DrawCall += DrawMenu;
-            InputManager.Instance.UseEndResponse += HideMenu;
+            useActionManager.DrawCall += DrawMenu;
+            inputManager.UseEndResponse += HideMenu;
         }
+
         public void DrawMenu(Dictionary<Unit,UseAction> cards)
         {
             HideMenu();

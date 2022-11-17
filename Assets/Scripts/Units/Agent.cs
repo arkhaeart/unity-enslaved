@@ -4,6 +4,9 @@ using UnityEngine;
 using Units.Modules;
 using Items;
 using GameSystems;
+using Pathfinding;
+using Zenject;
+
 namespace Units
 {
     public abstract class Agent:Unit,IDestroyable,IInventoryUser,IEqupmentUser
@@ -23,21 +26,21 @@ namespace Units
         public InventoryModule IModule => iModule;
 
         public EquipmentModule EModule => eModule;
-
-        protected virtual void Start()
+        [Inject]
+        public void OnSpawned(IPathFinder pathFinder)
         {
 
             rgbd = GetComponent<Rigidbody2D>();
 
-            mModule = new MovementModule(this, rgbd);
+            mModule = new MovementModule(this, rgbd,pathFinder);
             cModule = new CombatModule(this);
-            aModule = new AnimationModule(this,skeleton);
+            aModule = new AnimationModule(this, skeleton);
             hModule = new HealthModule(this);
-            iModule = new InventoryModule(this,InventoryModule.Type.AGENT);
+            iModule = new InventoryModule(this, InventoryModule.Type.AGENT);
             eModule = new EquipmentModule(this, EquipmentModule.Type.CHARACTER);
-            if(inventoryPreset!=null)
+            if (inventoryPreset != null)
             {
-                InventoryInfoUtil.UnpackAndInitInventoryInfo(inventoryPreset.info, IModule, EModule);
+                //InventoryInfoUtil.UnpackAndInitInventoryInfo(inventoryPreset.info, IModule, EModule);
             }
             csModule = new CharacterSkeletonModule(this);
             csModule.Init(eModule);
@@ -49,7 +52,7 @@ namespace Units
         }
         public void Death()
         {
-            PoolManager.Instance.Store(this);
+            //PoolManager.Instance.Store(this);
         }
     }
 }

@@ -12,15 +12,15 @@ namespace Items
         {
             iModule = new InventoryModule(this, InventoryModule.Type.CONTAINER);
         }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if(collision.tag=="Player")
-                TriggerEntered(GameSystems.UseAction.LOOT);
-        }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.tag == "Player")
-                TriggerExited();
-        }
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if(collision.tag=="Player")
+        //        TriggerEntered(GameSystems.UseAction.LOOT);
+        //}
+        //private void OnTriggerExit2D(Collider2D collision)
+        //{
+        //    if (collision.tag == "Player")
+        //        TriggerExited();
+        //}
     }
 }

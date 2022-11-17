@@ -7,15 +7,15 @@ namespace Units
 {
     public class Guard : AutoAgent
     {
-        protected override void Start()
-        {
-            base.Start();
-            TestEventManager.OnCriminal += OnCriminalFound;
-        }
-        void OnCriminalFound(Agent agent)
-        {
-            cModule.target = agent;
-        }
+        //protected override void Start()
+        //{
+        //    base.Start();
+        //    TestEventManager.OnCriminal += OnCriminalFound;
+        //}
+        //void OnCriminalFound(Agent agent)
+        //{
+        //    cModule.target = agent;
+        //}
 
 
     }

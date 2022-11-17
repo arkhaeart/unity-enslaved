@@ -7,13 +7,15 @@ namespace Units.Modules
     {
         public ModifiableParameter speed;
         protected Rigidbody2D rgbd;
-        CustomCour<Vector3> proceeding;
-        CustomCour<Vector3[]> followingPath;
-        public MovementModule(Agent _mono, Rigidbody2D _rgbd) : base(_mono)
+        protected IPathFinder pathFinder;
+        MyCour<Vector3> proceeding;
+        MyCour<Vector3[]> followingPath;
+        public MovementModule(Agent mono, Rigidbody2D rgbd,IPathFinder pathFinder) : base(mono)
         {
-            rgbd = _rgbd;
-            proceeding = new CustomCour<Vector3>(mono, new System.Func<Vector3, IEnumerator>(ProceedingToPoint));
-            followingPath = new CustomCour<Vector3[]>(mono, new System.Func<Vector3[], IEnumerator>(FollowingPath));
+            this.pathFinder = pathFinder;
+            this.rgbd = rgbd;
+            proceeding = new MyCour<Vector3>(base.mono, new System.Func<Vector3, IEnumerator>(ProceedingToPoint));
+            followingPath = new MyCour<Vector3[]>(base.mono, new System.Func<Vector3[], IEnumerator>(FollowingPath));
             speed = new ModifiableParameter(10);
         }
         public void CheckCurrentPath()
@@ -48,7 +50,7 @@ namespace Units.Modules
         }
         public void RequestPath(Vector3 target)
         {
-            PathFinder.Instance.OnPathRequested(
+            pathFinder.RequestPath(
                 new PathFinder.PathRequest(transform.position, target,
                 new System.Action<Vector3[]>(PathFound),
                 new PathFinder.PathFailedCallback(new System.Action(PathFailed))));
