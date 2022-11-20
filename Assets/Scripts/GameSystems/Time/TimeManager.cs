@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 namespace GameSystems.GameTime {
-    public class TimeManager : Singleton<TimeManager>
+    public class TimeManager 
     {
         public DateTime currentTime;
     }

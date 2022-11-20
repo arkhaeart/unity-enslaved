@@ -10,7 +10,7 @@ public class GameSettings : ScriptableObject
 {
     public ItemDatabase itemDatabase;
     public CrimeCodex.Settings crimeCodex;
-    public EqSlotObject eqSlots;
-    public EqSlotObject workShopSlots;
+    public EquipmentSlotsConfig eqSlots;
+    public EquipmentSlotsConfig workShopSlots;
     public InventoryInfoPresetHolder presetHolder;
 }

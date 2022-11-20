@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 namespace GameSystems {
-    public class CameraManager :Singleton<CameraManager>
+    public class CameraManager :MonoBehaviour
     {
 
     }

@@ -46,7 +46,7 @@ namespace Units.Modules
             {
                 for (int y = 0; y < height; y++)
                 {
-                    invGrid[i, y] = new GridCell(new MyTuple(i, y), this);
+                    invGrid[i, y] = new GridCell(new Vector2Int(i, y), this);
                 }
             }
         }
@@ -99,7 +99,7 @@ namespace Units.Modules
                 return inventory[i];
             else return null;
         }
-        public override void MoveItem(ItemBasedModule from,object index, MyTuple pos)
+        public override void MoveItem(ItemBasedModule from,object index, Vector2Int pos)
         {
             Item moved=from.GetItem(index);
             GridCell pCell = GetOffsetCell(moved,pos);
@@ -141,8 +141,8 @@ namespace Units.Modules
         }
         bool CheckFittable(Item item, GridCell cell)
         {
-            int xCheck = cell.pos.Item1 + item.X;
-            int yCheck = cell.pos.Item2 + item.Y;
+            int xCheck = cell.pos.x + item.X;
+            int yCheck = cell.pos.y + item.Y;
             if (xCheck > width || yCheck > height)
             {
                 return false;
@@ -151,11 +151,11 @@ namespace Units.Modules
         }
         bool CheckPlacable(Item item, GridCell cell)
         {
-            int maxWidth = Mathf.Clamp(cell.pos.Item1 + item.X, 0, width);
-            int maxHeight = Mathf.Clamp(cell.pos.Item2 + item.Y, 0, height);
-            for (int i = cell.pos.Item1; i < maxWidth; i++)
+            int maxWidth = Mathf.Clamp(cell.pos.x + item.X, 0, width);
+            int maxHeight = Mathf.Clamp(cell.pos.y + item.Y, 0, height);
+            for (int i = cell.pos.x; i < maxWidth; i++)
             {
-                for (int y = cell.pos.Item2; y < maxHeight; y++)
+                for (int y = cell.pos.y; y < maxHeight; y++)
                 {
 
                     if (invGrid[i, y].current != -1)
@@ -179,9 +179,9 @@ namespace Units.Modules
             Debug.Log($"Item {item} was added to {mono}");
             itemsToDraw.Add(index, new GridItem(cell, item));
             CellsClear?.Invoke(index);
-            for (int i = cell.pos.Item1; i < cell.pos.Item1 + item.X; i++)
+            for (int i = cell.pos.x; i < cell.pos.x + item.X; i++)
             {
-                for (int y = cell.pos.Item2; y < cell.pos.Item2 + item.Y; y++)
+                for (int y = cell.pos.y; y < cell.pos.y + item.Y; y++)
                 {
                     invGrid[i, y].Placed(index);
                 }
@@ -199,10 +199,10 @@ namespace Units.Modules
             }
             throw new System.Exception("Inventory max item count exceeded!");
         }
-        GridCell GetOffsetCell(Item item,MyTuple pos)
+        GridCell GetOffsetCell(Item item, Vector2Int pos)
         {
-            int xOffset = Mathf.Clamp(pos.Item1 - item.X / 2, 0, width);
-            int yOffset = Mathf.Clamp(pos.Item2 - item.Y / 2, 0, height);
+            int xOffset = Mathf.Clamp(pos.x - item.X / 2, 0, width);
+            int yOffset = Mathf.Clamp(pos.y - item.Y / 2, 0, height);
             return invGrid[xOffset, yOffset];
         }
 

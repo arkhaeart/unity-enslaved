@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 [CustomPropertyDrawer(typeof(StringDropDownAttribute))]
-public class DropDownAttributeEditor : PropertyDrawer
+public class StringDropDownAttributeEditor : PropertyDrawer
 {
     IDropDownFiller filler => Resources.Load(detail.path) as IDropDownFiller;
     StringDropDownAttribute detail => attribute as StringDropDownAttribute;

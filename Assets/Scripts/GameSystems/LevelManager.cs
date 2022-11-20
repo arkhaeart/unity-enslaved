@@ -4,7 +4,7 @@ using UnityEngine;
 using Units;
 namespace GameSystems
 {
-    public class LevelManager : Singleton<LevelManager>
+    public class LevelManager 
     {
         public Player player;
         public int currentLevel;

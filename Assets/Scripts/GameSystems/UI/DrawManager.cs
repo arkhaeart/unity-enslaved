@@ -5,7 +5,7 @@ using GameSystems;
 using Units.Modules;
 namespace UI
 {
-    public class DrawManager : Singleton<DrawManager>
+    public class DrawManager : MonoBehaviour
     {
         InventoryDrawer InvDrawer
         {

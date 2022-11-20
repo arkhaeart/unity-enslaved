@@ -153,19 +153,4 @@ namespace UI
             }
         }
     }
-    public class InventoryCard
-    {
-        public ItemBasedModule module;
-        public InventoryGridHolder holder;
-        public InventoryCard( InventoryGridHolder holder)
-        {
-            if (holder.holderType == "player")
-            {
-                module = LevelManager.Instance.player.IModule;
-            }
-            else if (holder.holderType == "playere")
-                module = LevelManager.Instance.player.EModule;
-            this.holder = holder;
-        }
-    }
 }

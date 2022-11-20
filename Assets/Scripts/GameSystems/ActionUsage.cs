@@ -4,7 +4,9 @@ using UnityEngine;
 using Units;
 using Items;
 using Units.Modules;
-namespace GameSystems {
+
+namespace GameSystems
+{
     public abstract class ActionUsage
     {
 

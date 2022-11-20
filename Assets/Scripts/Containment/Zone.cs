@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Units;
 using GameSystems;
-namespace Containment {
+
+namespace Containment
+{
     public class Zone : MonoBehaviour
     {
         Crime Crime;

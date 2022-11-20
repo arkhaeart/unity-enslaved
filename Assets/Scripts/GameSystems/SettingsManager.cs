@@ -13,8 +13,8 @@ namespace GameSystems
         const string workShopSlotsName = "WorkShopSlots";
         public ItemDatabase itemDatabase;
         public CrimeCodex crimeCodex;
-        public EqSlotObject eqSlots;
-        public EqSlotObject workShopSlots;
+        public EquipmentSlotsConfig eqSlots;
+        public EquipmentSlotsConfig workShopSlots;
         public InventoryInfoPresetHolder presetHolder;
 
         public void Init()
@@ -28,14 +28,13 @@ namespace GameSystems
             var infos = Resources.LoadAll(infoPath);
             itemDatabase = infos.First((n) => n is ItemDatabase) as ItemDatabase;
             //crimeCodex = infos.First((n) => n is CrimeCodex) as CrimeCodex;
-            eqSlots = infos.First(n => n.name==eqSlotsName ) as EqSlotObject;
-            workShopSlots=infos.First(n => n.name == workShopSlotsName) as EqSlotObject;
+            eqSlots = infos.First(n => n.name==eqSlotsName ) as EquipmentSlotsConfig;
+            workShopSlots=infos.First(n => n.name == workShopSlotsName) as EquipmentSlotsConfig;
             presetHolder = infos.First((n) => n is InventoryInfoPresetHolder) as InventoryInfoPresetHolder;
         }
         void InitSettings()
         {
             crimeCodex.Init();
-            eqSlots.Init();
             itemDatabase.Init();
         }
     }

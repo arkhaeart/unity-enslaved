@@ -8,10 +8,11 @@ namespace GameSystems
 {
     public class UseActionManager 
     {
-        public event System.Action<Dictionary<Unit, UseAction>> DrawCall; 
-
+        public event System.Action<Dictionary<Unit, UseAction>> DrawCall;
+        
         public Dictionary<Unit, UseAction> activeCards = new Dictionary<Unit, UseAction>();
         public Dictionary<UseAction, ActionUsage> actionDict = new Dictionary<UseAction, ActionUsage>();
+        public LevelManager levelManager;
         public void ActionRequest(Unit first, Unit second, UseAction useAction)
         {
 
@@ -39,9 +40,9 @@ namespace GameSystems
             ActionUsage usage = actionDict[activeCards[unit]];
             activeCards.Remove(unit);
             DrawCall(activeCards);
-            usage.Use(LevelManager.Instance.player,unit);
+            usage.Use(levelManager.player,unit);
         }
-        public UseActionManager(InputManager inputManager)
+        public UseActionManager(InputManager inputManager, LevelManager levelManager)
         {
             inputManager.UseStartResponse += OnChoiceStart;
             //SceneItem.TriggerEnter += AddToPossibleActions;
@@ -49,6 +50,7 @@ namespace GameSystems
             UseActionItem.Called += CallUseAction;
             ActionUsageFactory factory = new ActionUsageFactory();
             actionDict = factory.GetDict();
+            this.levelManager = levelManager;
         }
         //protected override void OnDisable()
         //{

@@ -20,8 +20,8 @@ namespace Units.Modules
         {
             public int current = -1;
             public InventoryModule module;
-            public MyTuple pos;
-            public GridCell(MyTuple pos, InventoryModule module)
+            public Vector2Int pos;
+            public GridCell(Vector2Int pos, InventoryModule module)
             {
                 current = -1;
                 this.pos = pos;
@@ -47,7 +47,7 @@ namespace Units.Modules
         {
         }
         public abstract void AddItem(Item item, object index);
-        public abstract void MoveItem(ItemBasedModule from, object index,  MyTuple pos);
+        public abstract void MoveItem(ItemBasedModule from, object index, Vector2Int pos);
         public abstract Item RemoveItem(object index);
         public abstract Item GetItem(object index);
         public void Draw()

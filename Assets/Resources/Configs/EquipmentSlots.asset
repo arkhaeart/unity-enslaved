@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02473da69287a147adaad72aa2b8334, type: 3}
-  m_Name: EqSlotsList
+  m_Script: {fileID: 11500000, guid: 0bef8ca8ca545334a96d0518d9a23eef, type: 3}
+  m_Name: EquipmentSlots
   m_EditorClassIdentifier: 
   possibleSlots:
-  - part: head_main
-    item: {fileID: 0}
-  - part: torso
-    item: {fileID: 0}
-  - part: legs
-    item: {fileID: 0}
-  - part: weapon
-    item: {fileID: 0}
-  - part: shield
-    item: {fileID: 0}
+  - torso
+  - legs
+  - head_main
+  - head_misc
+  - right_hand
+  - left_hand

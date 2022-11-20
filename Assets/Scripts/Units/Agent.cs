@@ -6,6 +6,7 @@ using Items;
 using GameSystems;
 using Pathfinding;
 using Zenject;
+using Develop.Behaviour.Modules;
 
 namespace Units
 {
